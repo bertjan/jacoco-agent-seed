@@ -12,10 +12,10 @@ wget https://raw.githubusercontent.com/bertjan/jacoco-agent-seed/master/coverage
 
 
 ### Configuration
-Edit coverage.properties, keys 'packagesToAnalyze' to 'packagePrefix' to (Java) packages for your project.
-Example:
-```
-packagesToAnalyze=( "/com/company/package1" "/com/company/package2" )  
-packagePrefix="/com/company/"
-```
-
+Edit coverage.properties and configure the following keys for your project:
+* appHealthCheckURL
+* appStopCommand
+* appStartCommand
+* appClassesDir
+* packagesToAnalyze
+* packagePrefix

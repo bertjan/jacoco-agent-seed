@@ -4,9 +4,9 @@ Project skeleton for measuring end-to-end test coverage on a running Linux test 
 ## Usage
 
 ### Installation
-```wget https://raw.githubusercontent.com/bertjan/jacoco-agent-seed/master/coverage-report.sh  
+```wget https://raw.githubusercontent.com/bertjan/jacoco-agent-seed/master/coverage-report.sh    
 wget https://raw.githubusercontent.com/bertjan/jacoco-agent-seed/master/coverage-setup.sh  
-wget https://raw.githubusercontent.com/bertjan/jacoco-agent-seed/master/coverage.properties  ```
+wget https://raw.githubusercontent.com/bertjan/jacoco-agent-seed/master/coverage.properties```
 
 
 ### Configuration

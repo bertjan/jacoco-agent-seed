@@ -33,7 +33,7 @@ do
   if [ "$checkForAgent" == "" ]
   then
     echo "replacing ${javaOptsConfigKey}"
-    cat $configFile | sed -e "s@${javaOptsConfigKey}=\"*\"@${javaOptsConfigKey}=\"-javaagent:/tmp/jacocoagent.jar=destfile=/tmp/jacoco.exec,append=true @g" > $tmpConfigFile
+    cat $configFile | sed -e "s@${javaOptsConfigKey}=\"*\"@${javaOptsConfigKey}=\"-javaagent:/tmp/jacocoagent.jar=destfile=${jacocoDataFile},append=true @g" > $tmpConfigFile
     mv $tmpConfigFile $configFile
   else
     echo "not replacing ${javaOptsConfigKey}, JaCoCo agent already added."
@@ -47,8 +47,8 @@ do
   ${appStopCommand} > /dev/null 2>&1
 done
 echo "App stopped."
-echo "Removing previous /tmp/jacoco.exec file (in case it exists)."
-rm -f /tmp/jacoco.exec
+echo "Removing previous ${jacocoDataFile} file (in case it exists)."
+rm -f ${jacocoDataFile}
 echo ""
 echo "Starting App."
 ${appStartCommand}
@@ -69,4 +69,12 @@ do
     sleep 2s
   fi
 done
-echo "App is healthy. Happy testing!"
+
+echo "App is healthy."
+
+if [ ! -f ${jacocoDataFile} ]; then
+  echo "JaCoCo data file (${jacocoDataFile}) not found. Something is wrong."
+  exit 1
+fi
+
+echo "Happy testing!"

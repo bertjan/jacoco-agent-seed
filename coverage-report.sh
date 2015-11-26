@@ -4,6 +4,10 @@ configFile="./coverage.properties"
 # read config
 . $configFile
 
+if [ ! -f ${jacocoDataFile} ]; then  echo "JaCoCo data file (${jacocoDataFile}) not found. Something is wrong."
+  exit 1
+fi
+
 echo "Stopping app (might take a minute)."
 # Hack: stop app multiple times to make sure that hanging processes are killed.
 for i in `seq 0 5`
@@ -28,7 +32,7 @@ cat << EOF > build-${project}.xml
 
 <jacoco:report>
     <executiondata>
-        <file file="/tmp/jacoco.exec"/>
+        <file file="${jacocoDataFile}"/>
     </executiondata>
     <structure name="${project}">
         <classfiles>

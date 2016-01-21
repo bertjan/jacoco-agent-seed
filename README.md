@@ -18,3 +18,15 @@ Edit coverage.properties and configure the following keys for your project:
 * appClassesDir
 * packagesToAnalyze
 * packagePrefix
+
+
+### Preparation
+Enable the JaCoCo agent:  
+```sudo ./coverage-setup.sh```
+
+### Execution
+Execute your (automated) tests, the JaCoCo agent will record coverage data.
+
+### Reporting
+Generate the report(s):  
+```sudo ./coverage-report.sh```
